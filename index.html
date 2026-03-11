@@ -36,7 +36,6 @@
       hreflang="en"
       href="https://oldgoldbuyerintrichy.in"
     />
-
     <link
       rel="alternate"
       hreflang="x-default"
@@ -162,9 +161,7 @@
         overflow-x: hidden;
       }
 
-      /* ============================================================
-         LOADING SCREEN
-      ============================================================ */
+      /* LOADING SCREEN */
       #loadingScreen {
         position: fixed;
         inset: 0;
@@ -184,8 +181,6 @@
         visibility: hidden;
         pointer-events: none;
       }
-
-      /* Ornamental top & bottom gold lines */
       #loadingScreen::before,
       #loadingScreen::after {
         content: "";
@@ -206,7 +201,6 @@
       #loadingScreen::after {
         bottom: 2rem;
       }
-
       .loader-brand {
         text-align: center;
         animation: loaderFadeIn 0.8s ease both;
@@ -227,8 +221,6 @@
         color: var(--gold-pale);
         margin-top: 6px;
       }
-
-      /* Spinning coin / gem loader */
       .loader-gem-wrap {
         position: relative;
         width: 80px;
@@ -263,8 +255,6 @@
         color: var(--gold);
         animation: loaderGemPulse 1.5s ease-in-out infinite;
       }
-
-      /* Gold shimmer progress bar */
       .loader-bar-wrap {
         width: min(280px, 70vw);
         animation: loaderFadeIn 0.8s 0.4s ease both;
@@ -274,7 +264,6 @@
         background: rgba(212, 160, 23, 0.15);
         border-radius: 2px;
         overflow: hidden;
-        position: relative;
       }
       .loader-bar-fill {
         height: 100%;
@@ -301,8 +290,6 @@
         text-align: center;
         margin-top: 10px;
       }
-
-      /* Floating gold particles */
       .loader-particles {
         position: absolute;
         inset: 0;
@@ -319,7 +306,6 @@
         animation: loaderParticleFloat var(--dur, 3s) var(--delay, 0s)
           ease-in-out infinite;
       }
-
       @keyframes loaderFadeIn {
         from {
           opacity: 0;
@@ -383,11 +369,7 @@
         }
       }
 
-      /* ============================================================
-         FLOATING BUTTON BOUNCE ANIMATIONS
-      ============================================================ */
-
-      /* WhatsApp button: gentle rhythmic bounce with subtle scale pulse */
+      /* FLOATING BUTTON ANIMATIONS */
       @keyframes fabWhatsappBounce {
         0%,
         100% {
@@ -415,8 +397,6 @@
           box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
         }
       }
-
-      /* Call button: energetic attention-grabbing bounce with gold glow */
       @keyframes fabCallBounce {
         0%,
         100% {
@@ -440,8 +420,6 @@
           box-shadow: 0 7px 24px rgba(212, 160, 23, 0.35);
         }
       }
-
-      /* Ring ripple effect behind buttons */
       .fab-wrap {
         position: relative;
       }
@@ -472,25 +450,18 @@
           transform: scale(2.2);
         }
       }
-
       .fab-whatsapp {
         animation: fabWhatsappBounce 4s ease-in-out 2s infinite;
       }
       .fab-call {
         animation: fabCallBounce 3.5s ease-in-out 3.5s infinite;
       }
-
-      /* Pause animations on hover so user can click comfortably */
-      .fab-whatsapp:hover {
-        animation-play-state: paused;
-      }
+      .fab-whatsapp:hover,
       .fab-call:hover {
         animation-play-state: paused;
       }
 
-      /* ============================================================
-         ALL ORIGINAL STYLES (unchanged)
-      ============================================================ */
+      /* GENERAL */
       .gold-divider {
         display: flex;
         align-items: center;
@@ -513,7 +484,6 @@
         color: var(--gold);
         font-size: 1rem;
       }
-
       .section-eyebrow {
         font-family: var(--font-body);
         font-size: 0.75rem;
@@ -534,7 +504,9 @@
         color: var(--gold);
       }
 
-      /* NAVBAR */
+      /* ============================================================
+         NAVBAR
+      ============================================================ */
       #mainNav {
         position: fixed;
         top: 0;
@@ -546,6 +518,10 @@
           padding var(--transition),
           box-shadow var(--transition);
         padding: 1rem 0;
+        /* Always keep a subtle bg so it's visible before scroll on mobile */
+        background: rgba(10, 10, 10, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
       }
       #mainNav.scrolled {
         background: rgba(10, 10, 10, 0.97);
@@ -666,6 +642,70 @@
       }
       .navbar-toggler-icon {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23D4A017' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* ============================================================
+         MOBILE NAVBAR FIX — collapsed menu solid background
+      ============================================================ */
+      @media (max-width: 991px) {
+        /* Solid dark panel for the dropdown */
+        #navMenu {
+          background: rgba(8, 8, 8, 0.99);
+          border: 1px solid rgba(212, 160, 23, 0.25);
+          border-top: 2px solid var(--gold);
+          padding: 0.5rem 1rem 1.2rem;
+          margin-top: 0.6rem;
+          box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85);
+        }
+
+        /* Readable nav links with gold divider lines */
+        #navMenu .navbar-nav .nav-link {
+          padding: 0.8rem 0.6rem !important;
+          border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+          font-size: 0.78rem;
+          letter-spacing: 0.18em;
+          transition:
+            color var(--transition),
+            background var(--transition),
+            padding-left var(--transition);
+        }
+        #navMenu .navbar-nav .nav-item:last-child .nav-link {
+          border-bottom: none;
+        }
+
+        /* Disable the desktop underline animation on mobile */
+        #navMenu .navbar-nav .nav-link::after {
+          display: none;
+        }
+
+        /* Subtle gold highlight on hover */
+        #navMenu .navbar-nav .nav-link:hover {
+          background: rgba(212, 160, 23, 0.07);
+          padding-left: 1.2rem !important;
+          color: var(--gold) !important;
+        }
+
+        /* Contact Us button full width at bottom of menu */
+        #navMenu .btn-nav-contact {
+          display: block;
+          text-align: center;
+          margin-top: 1rem;
+          padding: 0.7rem !important;
+          width: 100%;
+          background: rgba(212, 160, 23, 0.06);
+        }
+        #navMenu .btn-nav-contact:hover {
+          background: var(--gold);
+          color: var(--black) !important;
+        }
+
+        /* Always solid navbar bar — visible at top of page too */
+        #mainNav {
+          background: rgba(8, 8, 8, 0.96) !important;
+          backdrop-filter: blur(14px) !important;
+          -webkit-backdrop-filter: blur(14px) !important;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+        }
       }
 
       /* HERO */
@@ -963,7 +1003,6 @@
       .about-photo-grid .photo-wrap:hover img {
         transform: scale(1.04);
       }
-
       .about-stat-pill {
         display: inline-flex;
         align-items: center;
@@ -1937,15 +1976,12 @@
     </style>
   </head>
   <body>
-    <!-- ============================================================
-         LOADING SCREEN
-    ============================================================ -->
+    <!-- LOADING SCREEN -->
     <div
       id="loadingScreen"
       role="status"
       aria-label="Loading RKR Gold &amp; Silver"
     >
-      <!-- Floating particles -->
       <div class="loader-particles" aria-hidden="true">
         <div
           class="loader-particle"
@@ -1988,16 +2024,12 @@
           style="left: 55%; --dur: 2.7s; --delay: 1.5s"
         ></div>
       </div>
-
-      <!-- Brand name -->
       <div class="loader-brand">
         <div class="loader-brand-name">RKR Gold &amp; Silver</div>
         <div class="loader-brand-sub">
           (P) Ltd &middot; Diamond Bazar, Trichy
         </div>
       </div>
-
-      <!-- Logo -->
       <div class="loader-gem-wrap" aria-hidden="true">
         <div class="loader-gem-ring"></div>
         <div class="loader-gem-ring-2"></div>
@@ -2014,16 +2046,11 @@
           />
         </div>
       </div>
-
-      <!-- Progress bar -->
       <div class="loader-bar-wrap">
-        <div class="loader-bar-track">
-          <div class="loader-bar-fill"></div>
-        </div>
+        <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
         <div class="loader-bar-label">Loading &hellip;</div>
       </div>
     </div>
-    <!-- /LOADING SCREEN -->
 
     <!-- NAVBAR -->
     <nav
@@ -2151,7 +2178,7 @@
           <circle cx="130" cy="410" r="2" fill="rgba(212,160,23,0.3)" />
         </g>
       </svg>
-      <div class="hero-content">
+      <div class="hero-content mt-5">
         <div class="hero-badges">
           <span class="hero-badge-pill"
             ><i class="bi bi-geo-alt-fill"></i> Diamond Bazar, Trichy</span
@@ -2366,7 +2393,9 @@
                 ><span class="about-stat-label">&amp; Silver</span>
               </div>
             </div>
-            <div class="d-flex flex-wrap gap-3">
+            <div
+              class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start"
+            >
               <a href="tel:9943133323" class="btn-gold"
                 ><i class="bi bi-telephone-fill me-2"></i>Call Now</a
               >
@@ -2403,7 +2432,7 @@
                 <img
                   src="Assets/Old_gold_buyer.webp"
                   class="service-card-photo"
-                  alt="Old gold jewellery buyer near me Trichy – RKR Gold &amp; Silver"
+                  alt="Old gold jewellery buyer near me Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2420,14 +2449,13 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s">
             <div class="service-card h-100">
               <div class="service-card-img-wrap">
                 <img
                   src="Assets/Old_silver_buyer.webp"
                   class="service-card-photo"
-                  alt="Old silver buyer Trichy – sell old silver jewellery for instant cash"
+                  alt="Old silver buyer Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2446,14 +2474,13 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.3s">
             <div class="service-card h-100">
               <div class="service-card-img-wrap">
                 <img
                   src="Assets/Gold_coin_buyer.webp"
                   class="service-card-photo"
-                  alt="Gold coin buyer Trichy – sell gold coins at best price"
+                  alt="Gold coin buyer Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2470,14 +2497,13 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.4s">
             <div class="service-card h-100">
               <div class="service-card-img-wrap">
                 <img
                   src="Assets/Second_hand_jewellery_buyer.webp"
                   class="service-card-photo"
-                  alt="Second hand jewellery buyer Trichy – sell used jewellery"
+                  alt="Second hand jewellery buyer Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2496,14 +2522,13 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.5s">
             <div class="service-card h-100">
               <div class="service-card-img-wrap">
                 <img
                   src="Assets/Gold_seller__buy_goldpurchase_quality_gold_jewellery.webp"
                   class="service-card-photo"
-                  alt="Gold seller Trichy – buy gold jewellery at RKR Gold &amp; Silver"
+                  alt="Gold seller Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2520,14 +2545,13 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.6s">
             <div class="service-card h-100">
               <div class="service-card-img-wrap">
                 <img
                   src="Assets/Instant_cash_payment.webp"
                   class="service-card-photo"
-                  alt="Instant cash payment counter at gold and silver buyer Trichy"
+                  alt="Instant cash payment counter Trichy"
                   loading="lazy"
                   width="600"
                   height="180"
@@ -2560,7 +2584,6 @@
         <div class="gold-divider reveal">
           <span></span><i class="bi bi-gem"></i><span></span>
         </div>
-
         <div class="hiw-row mt-4 reveal">
           <div class="hiw-step-wrap">
             <div class="hiw-step">
@@ -3472,10 +3495,10 @@
             >
               Trichy's trusted
               <strong style="color: var(--off-white)"
-                >old gold buyer & seller</strong
+                >old gold buyer &amp; seller</strong
               >,
               <strong style="color: var(--off-white)"
-                >old silver buyer & seller</strong
+                >old silver buyer &amp; seller</strong
               >, gold coin buyer and second-hand jewellery buyer. Best market
               rate. Instant cash. 100% transparent.
             </p>
@@ -3496,7 +3519,6 @@
                 aria-label="Follow RKR Gold &amp; Silver on Facebook"
                 ><i class="bi bi-facebook"></i
               ></a>
-
               <a
                 href="https://youtube.com/@rkrgold?si=RkYA-mmJyLx8WUcX"
                 target="_blank"
@@ -3629,13 +3651,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script>
-      /* ============================================================
-         LOADING SCREEN — dismiss when page is ready
-      ============================================================ */
       (function () {
-        var MIN_DISPLAY = 2400; // ms — let the bar animation play fully
+        var MIN_DISPLAY = 2400;
         var startTime = Date.now();
-
         function hideLoader() {
           var elapsed = Date.now() - startTime;
           var remaining = Math.max(0, MIN_DISPLAY - elapsed);
@@ -3643,26 +3661,20 @@
             var screen = document.getElementById("loadingScreen");
             if (screen) {
               screen.classList.add("hide");
-              // Remove from DOM after fade completes so it doesn't block clicks
               setTimeout(function () {
                 screen.style.display = "none";
               }, 700);
             }
           }, remaining);
         }
-
         if (document.readyState === "complete") {
           hideLoader();
         } else {
           window.addEventListener("load", hideLoader);
-          // Fallback: never block page longer than 5s
           setTimeout(hideLoader, 5000);
         }
       })();
 
-      /* ============================================================
-         ORIGINAL SITE SCRIPTS (unchanged)
-      ============================================================ */
       $(function () {
         $(window).on("scroll", function () {
           $("#mainNav").toggleClass("scrolled", $(this).scrollTop() > 60);
@@ -3906,44 +3918,6 @@
           "jobTitle": "Proprietor"
         },
         "sameAs": ["https://wa.me/919943133323"]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.oldgoldbuyerintrichy.in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": "https://www.oldgoldbuyerintrichy.in#services"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Gold & Silver Estimator",
-            "item": "https://www.oldgoldbuyerintrichy.in#estimator"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "FAQ",
-            "item": "https://www.oldgoldbuyerintrichy.in#faq"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "name": "Contact",
-            "item": "https://www.oldgoldbuyerintrichy.in#contact"
-          }
-        ]
       }
     </script>
     <script type="application/ld+json">

@@ -2819,7 +2819,7 @@
               </div>
               <div class="result-box" id="resultBox">
                 <div class="result-label">
-                  Estimated Value (Approx. 95% of Market Rate)
+                  Estimated Value (Approx. 97% of Market Rate)
                 </div>
                 <div class="result-value" id="resultValue">—</div>
                 <div class="result-note">
@@ -3765,9 +3765,9 @@
           var goldValue;
           if (currentMetal === "gold") {
             var purity = parseFloat($("#puritySelect").val()) / 100;
-            goldValue = weight * purity * rate * 0.95;
+            goldValue = weight * purity * rate * 0.97;
           } else {
-            goldValue = weight * rate * 0.95;
+            goldValue = weight * rate * 0.97;
           }
           $("#resultValue").text(
             "₹ " +

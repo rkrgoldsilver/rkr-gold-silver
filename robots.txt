@@ -1,0 +1,70 @@
+# ============================================================
+# robots.txt — RKR Gold & Silver (P) Ltd
+# https://oldgoldbuyerintrichy.in/
+# Old Gold Buyer in Trichy | Diamond Bazar | 9943133323
+# ============================================================
+
+# Allow all well-behaved crawlers
+User-agent: *
+Allow: /
+
+# Block access to any admin, config, or private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /config/
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.env$
+
+# Allow Google to crawl JS and CSS (important for rendering)
+User-agent: Googlebot
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /Assets/
+
+# Allow Googlebot-Image to index all images
+User-agent: Googlebot-Image
+Allow: /
+Allow: /Assets/
+
+# Allow Bingbot full access
+User-agent: Bingbot
+Allow: /
+
+# Allow Google AdsBot (if ever running Google Ads)
+User-agent: AdsBot-Google
+Allow: /
+
+# Block known bad bots and scrapers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Crawl delay for generic bots (seconds) — prevents server overload
+# Note: Googlebot ignores crawl-delay; this applies to others
+User-agent: *
+Crawl-delay: 10
+
+# ============================================================
+# Sitemap location
+# ============================================================
+Sitemap: https://oldgoldbuyerintrichy.in/sitemap.xml
